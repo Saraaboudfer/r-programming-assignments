@@ -64,3 +64,71 @@ ggplot(df_long, aes(x = Name, y = Percent, fill = Poll)) +
        y = "Poll Percentage") +
   theme_minimal()
 ggsave("poll_chart.png", width = 8, height = 5)
+
+##Assignment 4 Visualizing and Interpreting Hospital Patient Data
+
+
+##Assignment 4 Visualizing and Interpreting Hospital Patient Data
+#Sara Aboudfer
+#LIS4370
+
+#1 Data Prep and Cleaning
+Frequency     <- c(0.6, 0.3, 0.4, 0.4, 0.2, 0.6, 0.3, 0.4, 0.9, 0.2)
+BloodPressure <- c(103, 87, 32, 42, 59, 109, 78, 205, 135, 176)
+FirstAssess   <- c(1, 1, 1, 1, 0, 0, 0, 0, NA, 1)    # bad=1, good=0
+SecondAssess  <- c(0, 0, 1, 1, 0, 0, 1, 1, 1, 1)    # low=0, high=1
+FinalDecision <- c(0, 1, 0, 1, 0, 1, 0, 1, 1, 1)    # low=0, high=1
+
+df_hosp <- data.frame(
+  Frequency, BloodPressure, FirstAssess,
+  SecondAssess, FinalDecision, stringsAsFactors = FALSE
+)
+# Inspect and handle NA:
+summary(df_hosp)
+df_hosp <- na.omit(df_hosp)
+
+#2 Generate Basic Visualizations
+boxplot(
+  BloodPressure ~ FirstAssess,
+  data = df_hosp,
+  names = c("Good","Bad"),
+  ylab = "Blood Pressure",
+  main = "BP by First MD Assessment"
+)
+
+boxplot(
+  BloodPressure ~ SecondAssess,
+  data = df_hosp,
+  names = c("Low","High"),
+  ylab = "Blood Pressure",
+  main = "BP by Second MD Assessment"
+)
+
+boxplot(
+  BloodPressure ~ FinalDecision,
+  data = df_hosp,
+  names = c("Low","High"),
+  ylab = "Blood Pressure",
+  main = "BP by Final Decision"
+)
+
+##Histogram
+hist(
+  df_hosp$Frequency,
+  breaks = seq(0, 1, by = 0.1),
+  xlab = "Visit Frequency",
+  main = "Histogram of Visit Frequency"
+)
+
+hist(
+  df_hosp$BloodPressure,
+  breaks = 8,
+  xlab = "Blood Pressure",
+  main = "Histogram of Blood Pressure"
+)
+<img width="347" height="248" alt="boxplot first assess" src="https://github.com/user-attachments/assets/9e37bbe0-99ba-4dca-a2d5-2a01a2467f61" />
+<img width="347" height="248" alt="boxplot second assess" src="https://github.com/user-attachments/assets/062023f4-1d57-4803-8a79-f17e140f9e78" />
+<img width="347" height="248" alt="boxplot final decision" src="https://github.com/user-attachments/assets/69055c21-d641-4429-ba62-2e31d97b5d1a" />
+<img width="347" height="248" alt="histo frequency" src="https://github.com/user-attachments/assets/c69c3dd2-ae6e-4ca1-b256-9d70550ebdae" />
+<img width="347" height="248" alt="histo blood pressure" src="https://github.com/user-attachments/assets/e9e9fc37-0b91-42dc-af2d-1e6d46e088d2" />
+Link to blog post: https://sara-r-programming.blogspot.com/2026/09/assignment-4-visualizing-and.html

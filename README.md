@@ -132,3 +132,34 @@ hist(
 <img width="347" height="248" alt="histo frequency" src="https://github.com/user-attachments/assets/c69c3dd2-ae6e-4ca1-b256-9d70550ebdae" />
 <img width="347" height="248" alt="histo blood pressure" src="https://github.com/user-attachments/assets/e9e9fc37-0b91-42dc-af2d-1e6d46e088d2" />
 Link to blog post: https://sara-r-programming.blogspot.com/2026/09/assignment-4-visualizing-and.html
+ 
+#Assignment 5 Matrix Algebra in R
+
+##Assignment 5 Matrix Algebra in R
+#LIS 4370
+#Sara Aboudfer
+
+#1. Create the matrices
+A <- matrix(1:100,  nrow = 10)
+B <- matrix(1:1000, nrow = 10)
+
+#2. Inspect Dimensions
+dim(A)  # should be 10 × 10
+dim(B)  # 10 × 100 — not square
+
+#3. Compute inverse and determinant
+# For A
+invA <- tryCatch(solve(A), error=function(e) e)
+detA <- tryCatch(det(A), error = function(e) e)
+
+# For B, use tryCatch to capture errors
+invB <- tryCatch(solve(B), error = function(e) e)
+detB <- tryCatch(det(B),   error = function(e) e)
+
+#Results
+print(invA)
+print(detA)
+print(invB)
+print(detB)
+
+Link to Blog Assignment 5: https://sara-r-programming.blogspot.com/2026/09/assignment-5-matrix-algebra-in-r.html

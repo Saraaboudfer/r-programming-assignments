@@ -163,3 +163,28 @@ print(invB)
 print(detB)
 
 Link to Blog Assignment 5: https://sara-r-programming.blogspot.com/2026/09/assignment-5-matrix-algebra-in-r.html
+
+[Uploading assignm##Assignment 6
+#LIS 4370
+#Sara Aboudfer
+
+#1. Matrix Addition and Subtraction
+A <- matrix(c(2, 0, 1, 3), ncol = 2)
+B <- matrix(c(5, 2, 4, -1), ncol = 2)
+A
+B
+A + B
+A - B
+
+#2. Diagonal Matrix
+D <- diag(c(4, 1, 2, 3))
+D
+#3. Construct 5x5 matrix
+my_matrix <- matrix(0, nrow = 5, ncol = 5)
+diag(my_matrix) <- 3
+my_matrix[1, 2:5] <- 1
+my_matrix[2:5, 1] <- 2
+my_matrixent6.R…]()
+
+Link for blog post: https://sara-r-programming.blogspot.com/2026/10/assignment-6-matrix-operations-and.html
+

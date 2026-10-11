@@ -235,5 +235,5 @@ setMethod("show", "student_s4", function(object) {
 s4_obj
 
 Link to Blog post: https://sara-r-programming.blogspot.com/2026/10/assignment-7-exploring-rs.html
-Explanation: All 3 generics words because mtcars is a data frame and R has matching methods for it. If there was no method R would use the default instead. 
+Explanation: All 3 generics worked because mtcars is a data frame and R has matching methods for it. If there was no method R would use the default instead. 
 

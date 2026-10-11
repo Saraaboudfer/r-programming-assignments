@@ -188,3 +188,52 @@ my_matrixent6.R…]()
 
 Link for blog post: https://sara-r-programming.blogspot.com/2026/10/assignment-6-matrix-operations-and.html
 
+
+##Assignment 7: Exploring R's Object Oriented Systems
+#Sara Aboudfer
+#LIS4370
+
+#install.packages("remotes")
+#remotes::install_github("hadley/pryr")
+#library(pryr)
+
+#1
+data("mtcars")
+head(mtcars)
+str(mtcars)
+
+#2
+print(mtcars)
+summary(mtcars)
+plot(mtcars)
+
+#3
+#S3
+s3_obj <- list(name = "Myself", age = 29, GPA = 3.5)
+class(s3_obj) <- "student_s3"
+#print method
+print.student_s3 <- function(x, ...) {
+  cat("S3 Student Object\n")
+  cat("Name:", x$name, "\n")
+  cat("Age:", x$age, "\n")
+  cat("GPA:", x$GPA, "\n")
+}
+s3_obj
+
+
+#S4
+setClass("student_s4",
+         slots = c(name = "character", age = "numeric", GPA = "numeric"))
+s4_obj <- new("student_s4", name = "Myself", age = 29, GPA = 3.5)
+#print method
+setMethod("show", "student_s4", function(object) {
+  cat("S4 Student Object\n")
+  cat("Name:", object@name, "\n")
+  cat("Age:", object@age, "\n")
+  cat("GPA:", object@GPA, "\n")
+})
+s4_obj
+
+Link to Blog post: https://sara-r-programming.blogspot.com/2026/10/assignment-7-exploring-rs.html
+Explanation: All 3 generics words because mtcars is a data frame and R has matching methods for it. If there was no method R would use the default instead. 
+

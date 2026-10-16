@@ -237,3 +237,68 @@ s4_obj
 Link to Blog post: https://sara-r-programming.blogspot.com/2026/10/assignment-7-exploring-rs.html
 Explanation: All 3 generics worked because mtcars is a data frame and R has matching methods for it. If there was no method R would use the default instead. 
 
+##Assignment 8 
+#LIS4370
+#sara Aboudfer
+#10/16/26
+
+setwd("C:/Users/abdel/Downloads")
+getwd()
+
+#Step 1
+student6 <- read.table(
+  "C:/Users/abdel/Downloads/Assignment 6 Dataset (1).txt",
+  header = TRUE,
+  sep = ",",
+  stringsAsFactors = FALSE
+)
+
+head(student6)
+str(student6)
+
+#Step 2
+library(plyr)
+
+gender_mean <- ddply(
+  student6,
+  "Sex",
+  summarise,
+  GradeAverage = mean(Grade, na.rm = TRUE)
+)
+gender_mean
+
+write.table(
+  gender_mean,
+  file = "gender_mean.txt",
+  sep = "\t",
+  row.names = FALSE
+)
+
+#Step 3
+i_students <- subset(
+  student6,
+  grepl("i", Name, ignore.case = TRUE)
+)
+i_students
+
+write.csv(
+  i_students$Name,
+  file = "i_students.csv",
+  row.names = FALSE,
+  quote = FALSE
+)
+
+
+write.csv(
+  i_students,
+  file = "i_students_full.csv",
+  row.names = FALSE
+)
+
+
+#File exists
+file.exists("gender_mean.txt", "i_students.csv", "i_students_full.csv")
+
+Link to blog post:https://sara-r-programming.blogspot.com/2026/10/assignment-8.html
+
+
